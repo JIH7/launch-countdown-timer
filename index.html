@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Launch countdown timer</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap" rel="stylesheet">
+  <!-- /Fonts -->
+
+  <link rel="stylesheet" href="main.css">
+  <title>Launch countdown timer</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
@@ -14,18 +20,68 @@
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
-<body>
+<body class="w-screen h-screen | bg-veryDarkBlacBlue">
+  <!-- Background Elements -->
+  <img class="select-none | -z-10 | fixed bottom-0 left-0 | h-48 w-[48rem] max-w-[48rem] md:w-full md:max-w-full" src="images/pattern-hills.svg" alt="backgroundhills">
+  <img class="select-none | -z-20 | fixed top-0 left-0 | h-3/4 w-full" src="images/bg-stars.svg" alt="backgroundstars">
+  <!-- /Background Elements -->
+  <!-- Content -->
+  <div class="h-full | flex flex-col items-center justify-center">
+    <h1 class="text-white tracking-widest text-2xl">WE'RE LAUNCHING SOON</h1>
+    <div class="container flex">
+      <div class="container-segment">
+        <div class="flip-card">
+          <div class="top">9</div>
+          <div class="bottom">9</div>
+        </div>
+        <div class="flip-card">
+          <div class="top">9</div>
+          <div class="bottom">9</div>
+        </div>
+      </div>
+      <div class="container-segment">
+        <div class="flip-card">
+          <div class="top">9</div>
+          <div class="bottom">9</div>
+        </div>
+        <div class="flip-card">
+          <div class="top">9</div>
+          <div class="bottom">9</div>
+        </div>
+      </div>
+      <div class="container-segment">
+        <div class="flip-card">
+          <div class="top">9</div>
+          <div class="bottom">9</div>
+        </div>
+        <div class="flip-card">
+          <div class="top">9</div>
+          <div class="bottom">9</div>
+        </div>
+      </div>
+      <div class="container-segment">
+        <div class="flip-card">
+          <div class="top">9</div>
+          <div class="bottom">9</div>
+        </div>
+        <div class="flip-card">
+          <div class="top">9</div>
+          <div class="bottom">9</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <a href="#" class="mx-4"><img src="images/icon-facebook.svg" alt="icon-facebook"></a>
+      <a href="#" class="mx-4"><img src="images/icon-pinterest.svg" alt="icon-facebook"></a>
+      <a href="#" class="mx-4"><img src="images/icon-instagram.svg" alt="icon-facebook"></a>
+    </div>
+  </div>
+  <!-- /Content -->
 
-  We're launching soon
-
-  Days
-  Hours
-  Minutes
-  Seconds
-  
-  <div class="attribution">
+  <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
-  </div>
+  </div> -->
+  <script src="main.js"></script>
 </body>
 </html>

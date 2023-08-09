@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Red Hat Text', sans-serif;
+}
+
+.flip-card {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0);
+
+    color: hsl(345, 95%, 68%);
+    font-size: 8rem;
+}
+
+.top,
+.bottom{
+    height: .75em;
+    line-height: 1;
+    padding: .25em;
+    overflow: hidden;
+}
+
+.top,
+.top-flip {
+    border-top-right-radius: .1em;
+    border-top-left-radius: .1em;
+
+    background-color: hsl(235, 16%, 14%);
+    border-bottom: 1px solid hsl(236, 21%, 26%);
+}
+
+.bottom,
+.bottom-flip {
+    display: flex;
+    align-items: flex-end;
+
+    border-bottom-left-radius: .1em;
+    border-bottom-right-radius: .1em;
+
+    background-color: hsl(236, 21%, 26%);
+}
+
+.flip-card .top-flip {
+    line-height: 1;
+    padding-top: .25em;
+    padding-left: .25em;
+    padding-right: .25em;
+    position: absolute;
+    content: attr(data-current-number);
+    height: 50%;
+    width: 100%;
+    overflow: hidden;
+
+    animation: flip-top 250ms ease-in;
+    transform-origin: bottom;
+}
+
+@keyframes flip-top {
+    100% {
+        transform: rotateX(90deg);
+    }
+}
+
+.flip-card .bottom-flip {
+    line-height: 1;
+    padding: .25em;
+    position: absolute;
+    content: attr(data-next-number);
+    height: 50%;
+    width: 100%;
+    overflow: hidden;
+    bottom: 0;
+
+    animation: flip-bottom 250ms ease-in-out 250ms;
+    transform-origin: top;
+    transform: rotateX(90deg);
+}
+
+@keyframes flip-bottom {
+    100% {
+        transform: rotateX(0deg);
+    }
+}
