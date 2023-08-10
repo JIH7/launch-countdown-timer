@@ -725,7 +725,7 @@ video {
 .top-flip {
   border-top-right-radius: .1em;
   border-top-left-radius: .1em;
-  background-color: hsl(235, 16%, 14%);
+  background-color: hsl(235, 18%, 19%);
   border-bottom: 1px solid hsl(236, 21%, 26%);
 }
 
@@ -733,9 +733,37 @@ video {
 .bottom-flip {
   display: flex;
   align-items: flex-end;
+  border-top-left-radius: -.1em;
+  border-top-right-radius: -.1em;
   border-bottom-left-radius: .1em;
   border-bottom-right-radius: .1em;
   background-color: hsl(236, 21%, 26%);
+}
+
+.bottom::before {
+  border-radius: 50%;
+  background-color: hsl(234, 17%, 12%);
+  width: 6%;
+  height: 6%;
+  position: absolute;
+  top: 47%;
+  left: -4%;
+  content: '';
+
+  z-index: 15;
+}
+
+.bottom::after {
+  border-radius: 50%;
+  background-color: hsl(234, 17%, 12%);
+  width: 6%;
+  height: 6%;
+  position: absolute;
+  top: 47%;
+  right: -4%;
+  content: '';
+
+  z-index: 15;
 }
 
 .top-flip {
@@ -809,6 +837,32 @@ video {
     .top-flip {
     padding: .1em .15em .1em .15em;
     line-height: 1.3;
+  }
+
+  .flip-card {
+    font-size: 3em;
+  }
+
+  .bottom,
+    .bottom-flip,
+    .top,
+    .top-flip {
+    padding: .1em .1em .1em .2em;
+    line-height: 1.3;
+  }
+}
+
+@media (min-width: 769) and (max-width: 1439px) {
+  .flip-card {
+    font-size: 4em;
+  }
+
+  .bottom,
+    .bottom-flip,
+    .top,
+    .top-flip {
+    padding: .25em .35em;
+    line-height: 1;
   }
 }
 
