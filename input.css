@@ -179,4 +179,8 @@
         padding: .25em .25em;
         line-height: 1;
     }
+
+    .container {
+        width: 90vw;
+    }
 }
