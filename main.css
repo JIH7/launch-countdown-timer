@@ -790,7 +790,6 @@ video {
 .svg:hover {
   cursor: pointer;
   opacity: 100%;
-  /* box-shadow: 0px 0px 2px 1px hsl(345, 95%, 68%); */
 }
 
 @keyframes flip-bottom {
@@ -808,7 +807,7 @@ video {
     .bottom-flip,
     .top,
     .top-flip {
-    padding: .1em .2em .1em .25em;
+    padding: auto;
     line-height: 1.3;
   }
 }
