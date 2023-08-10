@@ -81,6 +81,28 @@
     transform: rotateX(90deg);
 }
 
+.bottom,
+.bottom-flip,
+.top,
+.top-flip {
+    user-select: none;
+}
+
+.svg {
+    position: absolute;
+    top: 0;
+    opacity: 0%;
+    filter: invert(53%) sepia(25%) saturate(3716%) hue-rotate(312deg) brightness(103%) contrast(97%);
+
+    transition: all .2s;
+}
+
+.svg:hover {
+    cursor: pointer;
+    opacity: 100%;
+	/* box-shadow: 0px 0px 2px 1px hsl(345, 95%, 68%); */
+}
+
 @keyframes flip-bottom {
     100% {
         transform: rotateX(0deg);
