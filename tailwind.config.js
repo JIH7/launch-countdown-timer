@@ -18,7 +18,10 @@ module.exports = {
         'darkDesaturatedBlue': 'hsl(236, 21%, 26%)',
         'veryDarkBlue': 'hsl(235, 16%, 14%)',
         'veryDarkBlacBlue': 'hsl(234, 17%, 12%)',
-      }
+      },
+      letterSpacing: {
+        widester: '.4em',
+      },
     },
   },
   plugins: [],

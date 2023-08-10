@@ -14,13 +14,16 @@
 
     color: hsl(345, 95%, 68%);
     font-size: 8rem;
+
+    width: 100%;
+    height: auto;
 }
 
 .top,
 .bottom{
     height: .75em;
     line-height: 1;
-    padding: .25em;
+    padding: .5em;
     overflow: hidden;
 }
 
@@ -44,11 +47,9 @@
     background-color: hsl(236, 21%, 26%);
 }
 
-.flip-card .top-flip {
+.top-flip {
     line-height: 1;
-    padding-top: .25em;
-    padding-left: .25em;
-    padding-right: .25em;
+    padding: .5em;
     position: absolute;
     content: attr(data-current-number);
     height: 50%;
@@ -65,9 +66,9 @@
     }
 }
 
-.flip-card .bottom-flip {
+.bottom-flip {
     line-height: 1;
-    padding: .25em;
+    padding: .5em;
     position: absolute;
     content: attr(data-next-number);
     height: 50%;
@@ -83,5 +84,19 @@
 @keyframes flip-bottom {
     100% {
         transform: rotateX(0deg);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .flip-card {
+        font-size: 3em;
+    }
+
+    .bottom,
+    .bottom-flip,
+    .top,
+    .top-flip {
+        padding: .1em .1em .1em .13em;
+        line-height: 1.3;
     }
 }

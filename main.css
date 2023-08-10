@@ -554,8 +554,16 @@ video {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .bottom-0 {
   bottom: 0px;
+}
+
+.bottom-12 {
+  bottom: 3rem;
 }
 
 .left-0 {
@@ -579,6 +587,18 @@ video {
   margin-right: 1rem;
 }
 
+.mb-24 {
+  margin-bottom: 6rem;
+}
+
+.mt-28 {
+  margin-top: 7rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .flex {
   display: flex;
 }
@@ -597,6 +617,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.w-1\/5 {
+  width: 20%;
 }
 
 .w-\[48rem\] {
@@ -629,8 +653,12 @@ video {
   align-items: center;
 }
 
-.justify-center {
-  justify-content: center;
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-around {
+  justify-content: space-around;
 }
 
 .bg-veryDarkBlacBlue {
@@ -638,13 +666,27 @@ video {
   background-color: hsl(234 17% 12% / var(--tw-bg-opacity));
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+.text-center {
+  text-align: center;
 }
 
-.tracking-widest {
-  letter-spacing: 0.1em;
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.tracking-widester {
+  letter-spacing: .4em;
+}
+
+.text-grayishBlue {
+  --tw-text-opacity: 1;
+  color: hsl(237 18% 59% / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -663,13 +705,15 @@ video {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0);
   color: hsl(345, 95%, 68%);
   font-size: 8rem;
+  width: 100%;
+  height: auto;
 }
 
 .top,
 .bottom{
   height: .75em;
   line-height: 1;
-  padding: .25em;
+  padding: .5em;
   overflow: hidden;
 }
 
@@ -690,11 +734,9 @@ video {
   background-color: hsl(236, 21%, 26%);
 }
 
-.flip-card .top-flip {
+.top-flip {
   line-height: 1;
-  padding-top: .25em;
-  padding-left: .25em;
-  padding-right: .25em;
+  padding: .5em;
   position: absolute;
   content: attr(data-current-number);
   height: 50%;
@@ -710,9 +752,9 @@ video {
   }
 }
 
-.flip-card .bottom-flip {
+.bottom-flip {
   line-height: 1;
-  padding: .25em;
+  padding: .5em;
   position: absolute;
   content: attr(data-next-number);
   height: 50%;
@@ -730,6 +772,20 @@ video {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .flip-card {
+    font-size: 3em;
+  }
+
+  .bottom,
+    .bottom-flip,
+    .top,
+    .top-flip {
+    padding: .1em .1em .1em .13em;
+    line-height: 1.3;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:w-full {
     width: 100%;
@@ -737,5 +793,10 @@ video {
 
   .md\:max-w-full {
     max-width: 100%;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
