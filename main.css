@@ -840,6 +840,8 @@ video {
   .bottom::before,
     .bottom::after {
     top: 45%;
+    width: 9%;
+    height: 9%;
   }
 }
 
