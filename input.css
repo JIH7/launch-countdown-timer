@@ -96,7 +96,7 @@
     .bottom-flip,
     .top,
     .top-flip {
-        padding: .1em .1em .1em .13em;
+        padding: .1em .2em .1em .25em;
         line-height: 1.3;
     }
 }

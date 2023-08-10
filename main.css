@@ -680,21 +680,12 @@ video {
   line-height: 1.75rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
+.tracking-widest {
+  letter-spacing: 0.1em;
 }
 
 .tracking-widester {
   letter-spacing: .4em;
-}
-
-.tracking-wide {
-  letter-spacing: 0.025em;
-}
-
-.tracking-widest {
-  letter-spacing: 0.1em;
 }
 
 .text-grayishBlue {
@@ -794,7 +785,7 @@ video {
     .bottom-flip,
     .top,
     .top-flip {
-    padding: .1em .1em .1em .13em;
+    padding: .1em .2em .1em .25em;
     line-height: 1.3;
   }
 }
