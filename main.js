@@ -15,6 +15,9 @@ flipcards.push(document.getElementById("seconds"));
 for (let i = 0; i < 4; i++) {
     initializeCard(flipcards[i], formattedCurrentTime[i]);
 }
+for (let i = 0; i < 4; i++) {
+    initializeCard(flipcards[i], formattedCurrentTime[i]);
+} //Second loop to see if that corrects days overflow bug
 initialized = true;
 
 //Main loop of program
