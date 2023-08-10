@@ -1,18 +1,19 @@
 const countToDate = new Date();
 countToDate.setDate(countToDate.getDate() + 2);
 
-let [days, hours, minutes, seconds] = convertTime((countToDate - new Date()) / 1000);
-console.log(`${days} ${hours} ${minutes} ${seconds}`)
+//Values to initialize flipcards
+let formattedCurrentTime = convertTime((countToDate - new Date()) / 1000);
+const flipcards = [];
+flipcards.push(document.getElementById("days"));
+flipcards.push(document.getElementById("hours"));
+flipcards.push(document.getElementById("minutes"));
+flipcards.push(document.getElementById("seconds"));
 
-const daysFlipCard = document.getElementById("days");
-initializeCard(daysFlipCard, days);
-const hoursFlipCard = document.getElementById("hours");
-initializeCard(hoursFlipCard, hours);
-const minutesFlipCard = document.getElementById("minutes");
-initializeCard(minutesFlipCard, minutes);
-const secondsFlipCard = document.getElementById("seconds");
-initializeCard(secondsFlipCard, seconds);
+for (let i = 0; i < 4; i++) {
+    initializeCard(flipcards[i], formattedCurrentTime[i]);
+}
 
+//Main loop of program
 let previousTimeBetweenDates;
 setInterval(() => {
     const currentDate = new Date();
@@ -25,10 +26,19 @@ setInterval(() => {
     previousTimeBetweenDates = timeBetweenDates;
 }, 250);
 
+//Check if any flipcards need to update
 function checkForFlips(time) {
-    console.log(convertTime(time));
+    if(!time <= 0){
+        formattedCurrentTime = convertTime(time);
+    }
+    flipcards.forEach((flipcard, i) => {
+        const cardText = parseInt(flipcard.querySelector('.top').textContent);
+        if(cardText !== formattedCurrentTime[i])
+            flip(flipcard, i === 1 ? 23 : 59);
+    })
 }
 
+//Parse time in seconds to an array of [days, hours, minutes, seconds]
 function convertTime(time) {
     const timeArr = [];
     const seconds = time % 60;
@@ -47,7 +57,8 @@ function convertTime(time) {
     return timeArr;
 }
 
-function flip(flipCard) {
+//Handle flip animation and number decrementation for a passed flipcard
+function flip(flipCard, max) {
     const topHalf = flipCard.querySelector(".top");
     const bottomHalf = flipCard.querySelector(".bottom");
     const topFlip = document.createElement("div")
@@ -56,14 +67,15 @@ function flip(flipCard) {
     bottomFlip.classList.add('bottom-flip')
     flipCard.append(topFlip, bottomFlip);
     const startNumber = parseInt(topHalf.textContent);
+    const newNumber = startNumber !== 0 ? startNumber - 1 : max; 
 
     topHalf.textContent = makeString(startNumber);
     bottomHalf.textContent = makeString(startNumber);
     topFlip.textContent = makeString(startNumber);
-    bottomFlip.textContent = makeString(startNumber - 1);
+    bottomFlip.textContent = makeString(newNumber);
 
     topFlip.addEventListener("animationstart", e => {
-        topHalf.textContent = makeString(startNumber - 1);
+        topHalf.textContent = makeString(newNumber);
     });
     
     topFlip.addEventListener("animationend", e => {
@@ -71,11 +83,12 @@ function flip(flipCard) {
     })
     
     bottomFlip.addEventListener("animationend", e => {
-        bottomHalf.textContent = makeString(startNumber - 1);
+        bottomHalf.textContent = makeString(newNumber);
         bottomFlip.remove();
     }); 
 }
 
+//Parse number into string and add 0 before single digit number
 function makeString(num) {
     if(num < 10) {
         return '0' + num;
@@ -84,6 +97,7 @@ function makeString(num) {
     }
 }
 
+//Sets both values on flip cards as properly formatted strings
 function initializeCard(flipcard, value) {
     flipcard.querySelector('.top').textContent = makeString(value);
     flipcard.querySelector('.bottom').textContent = makeString(value);
