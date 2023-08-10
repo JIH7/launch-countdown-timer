@@ -59,6 +59,7 @@ function convertTime(time) {
 
 //Handle flip animation and number decrementation for a passed flipcard
 function flip(flipCard, max) {
+
     const topHalf = flipCard.querySelector(".top");
     const bottomHalf = flipCard.querySelector(".bottom");
     const topFlip = document.createElement("div")
@@ -69,7 +70,6 @@ function flip(flipCard, max) {
     const startNumber = parseInt(topHalf.textContent);
     const newNumber = startNumber !== 0 ? startNumber - 1 : max; 
 
-    topHalf.textContent = makeString(startNumber);
     bottomHalf.textContent = makeString(startNumber);
     topFlip.textContent = makeString(startNumber);
     bottomFlip.textContent = makeString(newNumber);
@@ -88,7 +88,7 @@ function flip(flipCard, max) {
     }); 
 }
 
-//Parse number into string and add 0 before single digit number
+//Helper function to parse number into string and add 0 before single digit number
 function makeString(num) {
     if(num < 10) {
         return '0' + num;

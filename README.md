@@ -1,93 +1,174 @@
-# Frontend Mentor - Launch countdown timer
+# Launch countdown timer
 
-![Design preview for the Launch countdown timer coding challenge](./design/desktop-preview.jpg)
+## Table of contents
 
-## Welcome! 👋
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-Thanks for checking out this front-end coding challenge.
+## Overview
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+### The challenge
 
-**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
-
-## The challenge
-
-Your challenge is to build out this countdown timer and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users are able to:
 
 - See hover states for all interactive elements on the page
-- See a live countdown timer that ticks down every second (start the count at 14 days)
-- **Bonus**: When a number changes, make the card flip from the middle
+- See a live countdown timer that ticks down every second, starting from 14 days.
+- When a number changes, the card animates to reveal the new number.
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![Screenshot](./images/Screenshot.JPG)
+![MobileScreenshot](./images/MobileScreenshot.JPG)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### Links
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+- [Live Site](https://helsel-launch-timer.netlify.app/)
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+## My process
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+### Built with
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+- Semantic HTML5 markup
+- [TailwindCSS](https://tailwindcss.com/)
+- Vanilla CSS
+- Flexbox
+- JavaScript
 
-## Building your project
+### What I learned
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+This project was quite challenging. I've been trying to raise my quality standards as I take on these Frontend Mentor challenges so I spent a lot of time polishing this one. This was my first time using the ::before and ::after pseudo elements. I discovered them when watching the video linked in the resources below. It really came in handy for the notches on the sides of the timer sections.
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+```css
+.bottom::before {
+    border-radius: 50%;
+    background-color: hsl(234, 17%, 12%);
 
-## Deploying your project
+    width: 6%;
+    height: 6%;
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+    position: absolute;
+    top: 47%;
+    left: -4%;
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+    content: '';
+    z-index: 15;
+}
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+.bottom::after {
+    border-radius: 50%;
+    background-color: hsl(234, 17%, 12%);
 
-## Create a custom `README.md`
+    width: 6%;
+    height: 6%;
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+    position: absolute;
+    top: 47%;
+    right: -4%;
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+    content: '';
+    z-index: 15;
+}
+```
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+Having these hover over the sides of the timers at a high z-index is a fantastic and easy way to make it appear that they're cutouts. Technically it could obscure stars in the background layer but that doesn't seem to be an issue.
 
-## Submitting your solution
+The timer was the real challenge of this project and tackling it was very fun. This was my first time using keyframes in CSS instead of just using a transition property. I used a video to get the basic ideas of the implementation down then tweaked it a ton to fit it to this project
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+The animation aspect is relatively simple. Animations are set up in CSS for extra tiles created at runtime.
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+```css
+.top-flip {
+    animation: flip-top 250ms ease-in;
+    transform-origin: bottom;
+}
 
-## Sharing your solution
+@keyframes flip-top {
+    100% {
+        transform: rotateX(90deg);
+    }
+}
 
-There are multiple places you can share your solution:
+.bottom-flip {
+    animation: flip-bottom 250ms ease-in-out 250ms;
+    transform-origin: top;
+    transform: rotateX(90deg);
+}
 
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+@keyframes flip-bottom {
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+```
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+```js
+//Check if any flipcards need to update
+function checkForFlips(time) {
+    if(!time <= 0){
+        formattedCurrentTime = convertTime(time); //Convert time is a helper function to turn seconds into DD/HH/MM/SS format.
+    }
+    flipcards.forEach((flipcard, i) => {
+        const cardText = parseInt(flipcard.querySelector('.top').textContent);
+        if(cardText !== formattedCurrentTime[i])
+            flip(flipcard, i === 1 ? 23 : 59);
+    })
+}
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+//Handle flip animation and number decrementation for a passed flipcard
+function flip(flipCard, max) {
+    //Get references to child elements
+    const topHalf = flipCard.querySelector(".top");
+    const bottomHalf = flipCard.querySelector(".bottom");
 
-## Got feedback for us?
+    //Create and append elements to animate
+    const topFlip = document.createElement("div")
+    topFlip.classList.add('top-flip')
+    const bottomFlip = document.createElement("div")
+    bottomFlip.classList.add('bottom-flip')
+    flipCard.append(topFlip, bottomFlip);
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+    //Get starting and target number
+    const startNumber = parseInt(topHalf.textContent);
+    const newNumber = startNumber !== 0 ? startNumber - 1 : max;
+    //Ensure all elements display the correct text
+    bottomHalf.textContent = makeString(startNumber); //makeString() is a helper function to ensure contents are a 2 character string
+    topFlip.textContent = makeString(startNumber);
+    bottomFlip.textContent = makeString(newNumber);
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
 
-**Have fun building!** 🚀
+    topFlip.addEventListener("animationstart", e => {
+        topHalf.textContent = makeString(newNumber);
+    });
+    
+    topFlip.addEventListener("animationend", e => {
+        topFlip.remove();
+    })
+    
+    bottomFlip.addEventListener("animationend", e => {
+        bottomHalf.textContent = makeString(newNumber);
+        bottomFlip.remove();
+    }); 
+}
+```
+
+
+### Continued development
+
+The tablet view of this could definitely use some tweaking, and there appears to be an issue with the animation playing on Safari for iPhone. I don't have easy access to an iPhone to test this on, but if anyone has an idea what's causing the issue, I'd love to hear feedback at jeremy.i.helsel@gmail.com
+
+### Useful resources
+
+- [Can I Create This Complex 3D Countdown Timer Animation?](https://youtu.be/p_6IuhmBsfc) - This video really helped break down the concepts behind this timer. I followed along a good bit before getting to a point where I could finish the implementation on my own. There are little tweaks that need to be made, such as making each segment two digits, and adding the notches on the sides (which I just used ::before and ::after pseudo elements for.)
+
+## Author
+
+- [My Portfolio Website](https://jeremyhelsel.com/)
+- Frontend Mentor - [@JIH7](https://www.frontendmentor.io/profile/JIH7)
