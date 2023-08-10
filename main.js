@@ -1,3 +1,6 @@
+//This is an attempt to prevent days from setting to 59
+let initialized = false;
+//Initialize timer
 const countToDate = new Date();
 countToDate.setDate(countToDate.getDate() + 2);
 
@@ -12,6 +15,7 @@ flipcards.push(document.getElementById("seconds"));
 for (let i = 0; i < 4; i++) {
     initializeCard(flipcards[i], formattedCurrentTime[i]);
 }
+initialized = true;
 
 //Main loop of program
 let previousTimeBetweenDates;
@@ -19,7 +23,7 @@ setInterval(() => {
     const currentDate = new Date();
     const timeBetweenDates = Math.ceil((countToDate - currentDate) / 1000);
 
-    if (previousTimeBetweenDates !== timeBetweenDates) {
+    if (previousTimeBetweenDates !== timeBetweenDates && initialized) {
         checkForFlips(timeBetweenDates);
     }
 
@@ -59,20 +63,25 @@ function convertTime(time) {
 
 //Handle flip animation and number decrementation for a passed flipcard
 function flip(flipCard, max) {
-
+    //Get references to child elements
     const topHalf = flipCard.querySelector(".top");
     const bottomHalf = flipCard.querySelector(".bottom");
+
+    //Create and append elements to animate
     const topFlip = document.createElement("div")
     topFlip.classList.add('top-flip')
     const bottomFlip = document.createElement("div")
     bottomFlip.classList.add('bottom-flip')
     flipCard.append(topFlip, bottomFlip);
-    const startNumber = parseInt(topHalf.textContent);
-    const newNumber = startNumber !== 0 ? startNumber - 1 : max; 
 
+    //Get starting and target number
+    const startNumber = parseInt(topHalf.textContent);
+    const newNumber = startNumber !== 0 ? startNumber - 1 : max;
+    //Ensure all elements display the correct text
     bottomHalf.textContent = makeString(startNumber);
     topFlip.textContent = makeString(startNumber);
     bottomFlip.textContent = makeString(newNumber);
+
 
     topFlip.addEventListener("animationstart", e => {
         topHalf.textContent = makeString(newNumber);
