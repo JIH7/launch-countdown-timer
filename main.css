@@ -749,7 +749,6 @@ video {
   top: 47%;
   left: -4%;
   content: '';
-
   z-index: 15;
 }
 
@@ -762,7 +761,6 @@ video {
   top: 47%;
   right: -4%;
   content: '';
-
   z-index: 15;
 }
 
@@ -850,11 +848,16 @@ video {
     padding: .1em .1em .1em .2em;
     line-height: 1.3;
   }
+
+  .bottom::before,
+    .bottom::after {
+    top: 50%;
+  }
 }
 
 @media (min-width: 769) and (max-width: 1439px) {
   .flip-card {
-    font-size: 4em;
+    font-size: 6em;
   }
 
   .bottom,
