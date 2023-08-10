@@ -807,7 +807,7 @@ video {
     .bottom-flip,
     .top,
     .top-flip {
-    padding: .1em .25em .1em .25em;
+    padding: .1em .15em .1em .15em;
     line-height: 1.3;
   }
 }
