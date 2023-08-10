@@ -1,5 +1,3 @@
-//This is an attempt to prevent days from setting to 59
-let initialized = false;
 //Initialize timer
 const countToDate = new Date();
 countToDate.setDate(countToDate.getDate() + 2);
@@ -15,10 +13,8 @@ flipcards.push(document.getElementById("seconds"));
 for (let i = 0; i < 4; i++) {
     initializeCard(flipcards[i], formattedCurrentTime[i]);
 }
-for (let i = 0; i < 4; i++) {
-    initializeCard(flipcards[i], formattedCurrentTime[i]);
-} //Second loop to see if that corrects days overflow bug
-initialized = true;
+//Hacky fix for days overflow bug
+initializeCard(flipcards[0], 2);
 
 //Main loop of program
 let previousTimeBetweenDates;
@@ -26,7 +22,7 @@ setInterval(() => {
     const currentDate = new Date();
     const timeBetweenDates = Math.ceil((countToDate - currentDate) / 1000);
 
-    if (previousTimeBetweenDates !== timeBetweenDates && initialized) {
+    if (previousTimeBetweenDates !== timeBetweenDates) {
         checkForFlips(timeBetweenDates);
     }
 
