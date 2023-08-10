@@ -803,6 +803,9 @@ video {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .svg {
@@ -854,7 +857,7 @@ video {
     .bottom-flip,
     .top,
     .top-flip {
-    padding: .25em .35em;
+    padding: .25em .25em;
     line-height: 1;
   }
 }

@@ -120,6 +120,9 @@
 .top,
 .top-flip {
     user-select: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .svg {
@@ -173,7 +176,7 @@
     .bottom-flip,
     .top,
     .top-flip {
-        padding: .25em .35em;
+        padding: .25em .25em;
         line-height: 1;
     }
 }
